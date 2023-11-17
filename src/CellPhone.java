@@ -9,6 +9,7 @@ public class CellPhone implements Cloneable {
     private int year;
     private double price;
 
+<<<<<<< HEAD
     // Constructors
     public CellPhone() {
         this.serialNum = 0;
@@ -80,5 +81,9 @@ public class CellPhone implements Cloneable {
                 kbd.nextLine();
             }
         }
+=======
+    public static void main(String[] args) {
+        System.out.println("he");
+>>>>>>> b2dbb4ab3386330cb1530a1ec512c72f91e0c80e
     }
 }
