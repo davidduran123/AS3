@@ -107,7 +107,6 @@ public class CellPhone implements Cloneable {
         CellPhone cell = (CellPhone) o;
         return this.getBrand().equals(cell.getBrand()) && this.getPrice() == cell.getPrice() && this.getYear() == cell.getYear();
     }
-
     public static void main(String[] args) {
         // TESTING (It works)
         System.out.println("Next SN: " + CellPhone.nextSN);
