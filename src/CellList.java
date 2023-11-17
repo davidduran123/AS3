@@ -18,9 +18,8 @@ public class CellList {
             this.node = another.node;
         }
 
-        public CellNode clone(){
-            return super.clone();
-
+        public CellNode clone() throws CloneNotSupportedException {
+            return (CellNode)super.clone();
         }
     }
 }

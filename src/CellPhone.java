@@ -59,7 +59,28 @@ public class CellPhone implements Cloneable {
 
     // Utility Methods
     public CellPhone clone() throws CloneNotSupportedException {
-        return (CellPhone)super.clone();
+        boolean validSN = false;
+        long newSN = -1;
+        long nextAvailSN = CellPhone.serialNumCtr + 1;
+        Scanner kbd = new Scanner(System.in);
+        while(!validSN) { // Prompt the user until a valid SN is input.
+            try {
+                System.out.println("Please enter the next available serial-number (#" + nextAvailSN + ") to assign to the CellPhone copy: ");
+                newSN = kbd.nextLong();
+                if(newSN != nextAvailSN)
+                    throw new IncorrectSNException(nextAvailSN);
+                kbd.nextLine();
+                validSN = true; // Valid SN has been input if we get to this point .:. break out of prompt loop.
+            } catch(InputMismatchException e) {
+                System.out.println("Invalid serial-number value! Please try again.");
+                kbd.nextLine();
+            } catch(IncorrectSNException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        CellPhone copy = (CellPhone)super.clone(); // Creating the copy w/bad serial-number.
+        copy.setSerialNum(newSN);
+        return copy;
     }
     public static void main(String[] args) {
         System.out.println("he");
