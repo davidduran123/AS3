@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class CellPhone implements Cloneable {
 
     // Attributes
-    private static long serialNumCtr = 0;
+    private static long nextSN = 0;
     private long serialNum;
     private String brand;
     private int year;
@@ -11,19 +11,25 @@ public class CellPhone implements Cloneable {
 
     // Constructors
     public CellPhone() {
-        this.serialNum = 0;
+        this.serialNum = CellPhone.nextSN++;
         this.brand = "N/A";
         this.year = 0;
         this.price = 0.00;
     }
     public CellPhone(long serialNum, String brand, int year, double price) {
-        this.serialNum = serialNum;
+        if(serialNum == nextSN)
+            this.serialNum = serialNum;
+        else
+            this.serialNum = nextSN++;
         this.brand = brand;
         this.year = year;
         this.price = price;
     }
-    public CellPhone(CellPhone cellPhone, long uniqueSerialNum){
-        this.serialNum = uniqueSerialNum;
+    public CellPhone(CellPhone cellPhone, long serialNum){
+        if(serialNum == nextSN)
+            this.serialNum = serialNum;
+        else
+            this.serialNum = nextSN++;
         this.brand = cellPhone.getBrand();
         this.year = cellPhone.getYear();
         this.price = cellPhone.getPrice();
@@ -58,17 +64,17 @@ public class CellPhone implements Cloneable {
     }
 
     // Utility Methods
+    @Override
     public CellPhone clone() throws CloneNotSupportedException {
         boolean validSN = false;
         long newSN = -1;
-        long nextAvailSN = CellPhone.serialNumCtr + 1;
         Scanner kbd = new Scanner(System.in);
         while(!validSN) { // Prompt the user until a valid SN is input.
             try {
-                System.out.println("Please enter the next available serial-number (#" + nextAvailSN + ") to assign to the CellPhone copy: ");
+                System.out.print("Please enter the next available serial-number (#" + CellPhone.nextSN + ") to assign to the CellPhone copy: ");
                 newSN = kbd.nextLong();
-                if(newSN != nextAvailSN)
-                    throw new IncorrectSNException(nextAvailSN);
+                if(newSN != CellPhone.nextSN)
+                    throw new IncorrectSNException(CellPhone.nextSN);
                 kbd.nextLine();
                 validSN = true; // Valid SN has been input if we get to this point .:. break out of prompt loop.
             } catch(InputMismatchException e) {
@@ -80,9 +86,35 @@ public class CellPhone implements Cloneable {
         }
         CellPhone copy = (CellPhone)super.clone(); // Creating the copy w/bad serial-number.
         copy.setSerialNum(newSN);
+        CellPhone.nextSN++;
         return copy;
     }
+    @Override
+    public String toString() {
+        return "CellPhone{" +
+                "serialNum=" + serialNum +
+                ", brand='" + brand + '\'' +
+                ", year=" + year +
+                ", price=" + price +
+                '}';
+    }
+
     public static void main(String[] args) {
-        System.out.println("he");
+        // TESTING (It works)
+        System.out.println("Next SN: " + CellPhone.nextSN);
+        CellPhone iPhone = new CellPhone();
+        System.out.println(iPhone);
+        System.out.println("Next SN: " + CellPhone.nextSN);
+
+        CellPhone Pixel = null;
+        try{
+            Pixel = iPhone.clone();
+        }
+        catch(CloneNotSupportedException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println(Pixel);
+        System.out.println("Next SN: " + CellPhone.nextSN);
+
     }
 }
