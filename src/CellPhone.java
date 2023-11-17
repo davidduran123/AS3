@@ -98,6 +98,15 @@ public class CellPhone implements Cloneable {
                 ", price=" + price +
                 '}';
     }
+    @Override
+    public boolean equals(Object o) {
+        if(this == o)
+            return true;
+        if(o == null || o.getClass() != this.getClass())
+            return false;
+        CellPhone cell = (CellPhone) o;
+        return this.getBrand().equals(cell.getBrand()) && this.getPrice() == cell.getPrice() && this.getYear() == cell.getYear();
+    }
 
     public static void main(String[] args) {
         // TESTING (It works)
@@ -115,6 +124,16 @@ public class CellPhone implements Cloneable {
         }
         System.out.println(Pixel);
         System.out.println("Next SN: " + CellPhone.nextSN);
+
+        if(iPhone.equals(Pixel))
+            System.out.println("Phones are the same!");
+        else
+            System.out.println("Phones are not the same");
+        iPhone.setBrand("Apple");
+        if(iPhone.equals(Pixel))
+            System.out.println("Phones are the same!");
+        else
+            System.out.println("Phones are not the same!");
 
     }
 }
