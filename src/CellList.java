@@ -2,8 +2,8 @@ public class CellList {
     // INNER CLASS
     class CellNode implements Cloneable {
     // ATTRIBUTES
-        CellPhone phone;
-        CellNode node;
+        CellPhone phone; // What the node contains.
+        CellNode node; // Pointer to the next node.
 
     // CONSTRUCTORS
         public CellNode () {
@@ -65,4 +65,11 @@ public class CellList {
     public void setSize(int size) {
         this.size = size;
     }
+
+    // ACTION METHODS
+    public void addToStart(CellPhone phone) {
+        this.head = new CellNode(phone, this.head);
+    }
+
+
 }
