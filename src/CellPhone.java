@@ -9,7 +9,6 @@ public class CellPhone implements Cloneable {
     private int year;
     private double price;
 
-<<<<<<< HEAD
     // Constructors
     public CellPhone() {
         this.serialNum = 0;
@@ -59,31 +58,10 @@ public class CellPhone implements Cloneable {
     }
 
     // Utility Methods
-    public CellPhone clone(){ // Method to be re-written
-        try { // Use the Object clone() to copy all of 'this' attributes to the new object.
-            Object copy = super.clone();
-        }
-        catch(CloneNotSupportedException e){
-            System.out.println(e.getMessage());
-        }
-
-        boolean validSN = false;
-        long newSN = -1;
-        Scanner kbd = new Scanner(System.in);
-        while(!validSN) { // Prompt the user until a valid SN is input.
-            try {
-                System.out.println("Cloning a CellPhone object! Please enter a unique serial-number: ");
-                newSN = kbd.nextLong();
-                kbd.nextLine();
-                validSN = true; // Valid SN has been input if we get to this point .:. break out of prompt loop.
-            } catch(InputMismatchException e) {
-                System.out.println("Invalid serial-number value! Please try again.");
-                kbd.nextLine();
-            }
-        }
-=======
+    public CellPhone clone() throws CloneNotSupportedException {
+        return (CellPhone)super.clone();
+    }
     public static void main(String[] args) {
         System.out.println("he");
->>>>>>> b2dbb4ab3386330cb1530a1ec512c72f91e0c80e
     }
 }
