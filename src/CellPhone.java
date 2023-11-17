@@ -71,7 +71,7 @@ public class CellPhone implements Cloneable {
         Scanner kbd = new Scanner(System.in);
         while(!validSN) { // Prompt the user until a valid SN is input.
             try {
-                System.out.print("Please enter the next available serial-number (#" + CellPhone.nextSN + ") to assign to the CellPhone copy: ");
+                System.out.print("Please enter the next available serial-number (" + CellPhone.nextSN + ") to assign to the CellPhone copy: ");
                 newSN = kbd.nextLong();
                 if(newSN != CellPhone.nextSN)
                     throw new IncorrectSNException(CellPhone.nextSN);
