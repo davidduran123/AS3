@@ -1,9 +1,11 @@
+import java.util.NoSuchElementException;
+
 public class CellList {
     // INNER CLASS
     class CellNode implements Cloneable {
     // ATTRIBUTES
-        CellPhone phone; // What the node contains.
-        CellNode next; // Pointer to the next node.
+        private CellPhone phone; // What the node contains.
+        private CellNode next; // Pointer to the next node.
 
     // CONSTRUCTORS
         public CellNode () { // Create an empty node.
@@ -73,6 +75,7 @@ public class CellList {
      */
     public void addToStart(CellPhone phone) {
         this.head = new CellNode(phone, this.head);
+        this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
     }
 
     /**
@@ -87,6 +90,8 @@ public class CellList {
             this.head = t.next;
             t.next = null;
             t = null;
+
+            this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
     }
 
@@ -96,11 +101,12 @@ public class CellList {
      * @param phone CellPhone object for the node to hold.
      * @param index Index where the method must insert the node in the list.
      */
-    public void insertAtIndex(CellPhone phone, int index){
-        if(this.size == 0) // Scenario #1: List is empty.
+    public void insertAtIndex(CellPhone phone, int index) throws NoSuchElementException {
+        if(index < 0 && index > this.size - 1){ // Scenario #1: The list has nodes, but the index doesn't exist!
+            throw new NoSuchElementException("ERROR: Index " + index + " does not exist in this list!");
+        }
+        else if(this.size == 0) { // Scenario #2: List is empty.
             addToStart(phone);
-        else if(index < 0 && index > this.size - 1){ // Scenario #2: The list has nodes, but the index doesn't exist!
-            System.out.println("ERROR: Index " + index + " does not exist in this list!");
         }
         else { // Scenario #3: The index exists in the list!
             CellNode t = this.head;
@@ -109,6 +115,8 @@ public class CellList {
             }
              t.next = new CellNode(phone, t.next);
             t = null;
+
+            this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
     }
 
