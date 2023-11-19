@@ -90,22 +90,19 @@ public class CellList {
         }
     }
     public void insertAtIndex(CellPhone phone, int index){
-
         if(this.size == 0) // Scenario #1: List is empty.
             addToStart(phone);
         else if(index < 0 && index > this.size - 1){ // Scenario #2: The list has nodes, but the index doesn't exist!
-            System.out.println("");
+            System.out.println("ERROR: Index " + index + " does not exist in this list!");
         }
-//        else {
-//            CellNode t = head;
-//            for(int i = 0; i < this.size; ++i){
-//                if(t.next == null && i != index) // Scenario #2: The index does not exist.
-//                    break;
-//                else if(i == index) {
-//
-//                }
-//            }
-//        }
+        else { // Scenario #3: The index exists in the list!
+            CellNode t = this.head;
+            for(int i = 0; i < index - 1; ++i){
+                t = t.next;
+            }
+             t.next = new CellNode(phone, t.next);
+            t = null;
+        }
     }
 
 
