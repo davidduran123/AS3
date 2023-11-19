@@ -89,6 +89,13 @@ public class CellList {
             t = null;
         }
     }
+
+    /**
+     * Method inserts a node at a specified index in the linked-list.
+     * It handles three different linked-list structure scenarios (1) Empty list (2) index doesn't exist (3) Index exists
+     * @param phone CellPhone object for the node to hold.
+     * @param index Index where the method must insert the node in the list.
+     */
     public void insertAtIndex(CellPhone phone, int index){
         if(this.size == 0) // Scenario #1: List is empty.
             addToStart(phone);
@@ -103,6 +110,25 @@ public class CellList {
              t.next = new CellNode(phone, t.next);
             t = null;
         }
+    }
+
+    /**
+     * Method determines the size of the linked-list that called it.
+     * @return The size of the linked-list that called the method.
+     */
+    public int findListSize(){
+        if(this.head == null)
+            return 0;
+
+        CellNode t = this.head;
+        int sizeCtr = 1;
+
+        while(t.next != null){
+            t = t.next;
+            ++sizeCtr;
+        }
+        t = null;
+        return sizeCtr;
     }
 
 
