@@ -1,4 +1,5 @@
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 public class CellPhone implements Cloneable {
 
@@ -121,6 +122,7 @@ public class CellPhone implements Cloneable {
         catch(CloneNotSupportedException e){
             System.out.println(e.getMessage());
         }
+
         System.out.println(Pixel);
         System.out.println("Next SN: " + CellPhone.nextSN);
 
@@ -128,11 +130,49 @@ public class CellPhone implements Cloneable {
             System.out.println("Phones are the same!");
         else
             System.out.println("Phones are not the same");
+
         iPhone.setBrand("Apple");
+
         if(iPhone.equals(Pixel))
             System.out.println("Phones are the same!");
         else
             System.out.println("Phones are not the same!");
+
+        // TESTING CellList Methods
+        CellList CL1 = new CellList();
+
+        // T1: Adding two phones at the start, back to back.
+        CL1.addToStart(iPhone);
+        System.out.println("This list has " + CL1.getSize() + " node(s).");
+        CL1.addToStart(Pixel);
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+
+        CL1.insertAtIndex(new CellPhone(), 1);
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+
+        // T2: Deleting the Pixel from the start index.
+        CL1.deleteFromStart();
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+
+        //T3: Inserting at the first index.
+        try{
+            CL1.insertAtIndex(Pixel, 0);
+        }
+        catch(NoSuchElementException e) {
+            System.out.println(e.getMessage());
+            System.exit(0);
+        }
+
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+
+        CL1.deleteFromStart();
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+
+        CL1.deleteFromStart();
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+
+        CL1.deleteFromStart();
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
 
     }
 }

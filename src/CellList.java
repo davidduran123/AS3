@@ -102,7 +102,7 @@ public class CellList {
      * @param index Index where the method must insert the node in the list.
      */
     public void insertAtIndex(CellPhone phone, int index) throws NoSuchElementException {
-        if(index < 0 && index > this.size - 1){ // Scenario #1: The list has nodes, but the index doesn't exist!
+        if(index < 0 || index > this.size - 1){ // Scenario #1: The list has nodes, but the index doesn't exist!
             throw new NoSuchElementException("ERROR: Index " + index + " does not exist in this list!");
         }
         else if(this.size == 0) { // Scenario #2: List is empty.
