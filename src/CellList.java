@@ -6,7 +6,7 @@ public class CellList {
         CellNode next; // Pointer to the next node.
 
     // CONSTRUCTORS
-        public CellNode () {
+        public CellNode () { // Create an empty node.
             phone = null;
             next = null;
         }
@@ -16,7 +16,7 @@ public class CellList {
             this.next = node;
         }
 
-        public CellNode (CellNode another){
+        public CellNode (CellNode another){ // Create a copy of a node.
             this.phone = another.phone;
             this.next = another.next;
         }
@@ -67,6 +67,10 @@ public class CellList {
     }
 
     // ACTION METHODS
+    /**
+     * Method adds a node to the first position of the linked list.
+     * @param phone is the CellPhone object for the node to hold.
+     */
     public void addToStart(CellPhone phone) {
         this.head = new CellNode(phone, this.head);
     }
@@ -85,6 +89,28 @@ public class CellList {
             t = null;
         }
     }
+    public void insertAtIndex(CellPhone phone, int index){
+
+        if(this.size == 0) // Scenario #1: List is empty.
+            addToStart(phone);
+        else if(index < 0 && index > this.size - 1){ // Scenario #2: The list has nodes, but the index doesn't exist!
+            System.out.println("");
+        }
+//        else {
+//            CellNode t = head;
+//            for(int i = 0; i < this.size; ++i){
+//                if(t.next == null && i != index) // Scenario #2: The index does not exist.
+//                    break;
+//                else if(i == index) {
+//
+//                }
+//            }
+//        }
+    }
+
+
+
+
 
 
 }
