@@ -150,6 +150,8 @@ public class CellPhone implements Cloneable {
         CL1.insertAtIndex(new CellPhone(), 1);
         System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
 
+        System.out.println(CellPhone.nextSN);
+
         // T2: Deleting the Pixel from the start index.
         CL1.deleteFromStart();
         System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS

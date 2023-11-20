@@ -48,6 +48,7 @@ public class CellList {
     // CONSTRUCTORS
     public CellList(){
         this.head = null;
+        this.size = 0;
     }
     public CellList(CellList listToCopy){
         this.head = listToCopy.getHead();
@@ -119,6 +120,25 @@ public class CellList {
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
     }
+    public void deleteFromIndex(int index) {
+        if(index < 0 || index > this.size - 1 || this.size == 0){ // Scenario #1: The index doesn't exist OR the linked list is empty.
+            throw new NoSuchElementException("ERROR: Index " + index + " does not exist in this list!");
+        }
+        else if(this.size == 1) { // Scenario #2: List contains one node.
+            this.head = null;
+            this.setSize(this.findListSize());
+        }
+        else { // Scenario #3: List contains one node.
+            CellNode t = this.head;
+            for(int i = 0; i < index - 1; ++i){
+                t = t.next;
+            }
+            t.next = t.next.next; // Removing the reference to the node object we want to remove.
+            t = null;
+            this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list
+        }
+    }
+
 
     /**
      * Method determines the size of the linked-list that called it.
