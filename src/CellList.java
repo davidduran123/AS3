@@ -120,6 +120,11 @@ public class CellList {
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
     }
+
+    /**
+     * Method removes a node in a specified index of the list (if it exists) and adjusts size of the list accordingly.
+     * @param index Index where the method must delete the node in the list.
+     */
     public void deleteFromIndex(int index) {
         if(index < 0 || index > this.size - 1 || this.size == 0){ // Scenario #1: The index doesn't exist OR the linked list is empty.
             throw new NoSuchElementException("ERROR: Index " + index + " does not exist in this list!");
@@ -139,6 +144,17 @@ public class CellList {
         }
     }
 
+    public void replaceAtIndex(CellPhone phone, int index){
+        if(index < 0 || index > this.size - 1 || this.size == 0){ // Scenario #1: The index doesn't exist OR the linked list is empty.
+            throw new NoSuchElementException("ERROR: Index " + index + " does not exist in this list!");
+        }
+        else if(index == 0) { // Scenario #2: We want to replace the first node.
+            this. head = new CellNode(phone,this.head.next);
+        }
+        else{
+
+        }
+    }
 
     /**
      * Method determines the size of the linked-list that called it.
