@@ -176,5 +176,29 @@ public class CellPhone implements Cloneable {
         CL1.deleteFromStart();
         System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
 
+        //T4: deleteFromIndex() tests
+
+        // Empty List
+        try {
+            CL1.deleteFromIndex(0);
+        }
+        catch(NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        for(int i = 0; i < 5; ++i){
+            CL1.addToStart(new CellPhone());
+        }
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+        try {
+            CL1.deleteFromIndex(0);
+        }
+        catch(NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+
+
     }
 }
