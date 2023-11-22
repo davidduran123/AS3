@@ -50,7 +50,7 @@ public class CellList {
         this.head = null;
         this.size = 0;
     }
-    public CellList(CellList listToCopy){
+    public CellList(CellList listToCopy){ // To be modified to what we saw in lecture!
         this.head = listToCopy.getHead();
         this.size = listToCopy.getSize();
     }
@@ -151,8 +151,13 @@ public class CellList {
         else if(index == 0) { // Scenario #2: We want to replace the first node.
             this. head = new CellNode(phone,this.head.next);
         }
-        else{
-
+        else { // Scenario #3: We want to replace a node in the middle
+            CellNode t = this.head;
+            for(int i = 0; i < index -1; ++i) { // Move our pointer "t" to the node BEFORE the target index.
+                t = t.next;
+            }
+            t.next = new CellNode(phone,t.next);
+            t = null; // Get rid of the backdoor to our linked list.
         }
     }
 
