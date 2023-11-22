@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public class CellList {
+public class CellList extends c {
     // INNER CLASS
     class CellNode implements Cloneable {
     // ATTRIBUTES
@@ -41,11 +41,14 @@ public class CellList {
         }
     }
 
-    // ATTRIBUTES
+// ATTRIBUTES
+
     private CellNode head;
     private int size;
+    private String listName;
 
-    // CONSTRUCTORS
+// CONSTRUCTORS
+
     public CellList(){
         this.head = null;
         this.size = 0;
@@ -55,7 +58,8 @@ public class CellList {
         this.size = listToCopy.getSize();
     }
 
-    // SET & GET
+// SET & GET
+
     public CellNode getHead() {
         return head;
     }
@@ -69,7 +73,8 @@ public class CellList {
         this.size = size;
     }
 
-    // ACTION METHODS
+// ACTION METHODS
+
     /**
      * Method adds a node to the first position of the linked list.
      * @param phone is the CellPhone object for the node to hold.
@@ -104,7 +109,7 @@ public class CellList {
      */
     public void insertAtIndex(CellPhone phone, int index) throws NoSuchElementException {
         if(index < 0 || index > this.size - 1){ // Scenario #1: The list has nodes, but the index doesn't exist!
-            throw new NoSuchElementException("ERROR: Index " + index + " does not exist in this list!");
+            throw new NoSuchElementException("ERROR: Cannot insert node at index " + index + " as it does not exist in this list!");
         }
         else if(this.size == 0) { // Scenario #2: List is empty.
             addToStart(phone);
@@ -127,7 +132,7 @@ public class CellList {
      */
     public void deleteFromIndex(int index) {
         if(index < 0 || index > this.size - 1 || this.size == 0){ // Scenario #1: The index doesn't exist OR the linked list is empty.
-            throw new NoSuchElementException("ERROR: Index " + index + " does not exist in this list!");
+            throw new NoSuchElementException(c("r") + "ERROR: Node at index "+ c("rs") + index + c("r")+ " can't be deleted, it doesn't exist in this list!" + c("rs"));
         }
         else if(this.size == 1) { // Scenario #2: List contains one node.
             this.head = null;
@@ -142,42 +147,50 @@ public class CellList {
             t = null;
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list
         }
+        System.out.println(c("y") + "Deleted node at index " + c("rs") + index + c("y") + " in list " + c("rs") + this + ".");
     }
 
-    public void replaceAtIndex(CellPhone phone, int index){
-        if(index < 0 || index > this.size - 1 || this.size == 0){ // Scenario #1: The index doesn't exist OR the linked list is empty.
-            throw new NoSuchElementException("ERROR: Index " + index + " does not exist in this list!");
+    public void replaceAtIndex(CellPhone phone, int index) throws NoSuchElementException {
+        if(index < 0 || this.size == 0 || index > this.size - 1){ // Scenario #1: The index doesn't exist OR the linked list is empty.
+            throw new NoSuchElementException(c("r") + "ERROR: Cannot replace node at index " + c("rs") + index + c("r") + ", it doesn't exist in this list!" + c("rs"));
         }
         else if(index == 0) { // Scenario #2: We want to replace the first node.
-            this. head = new CellNode(phone,this.head.next);
+            this.head = new CellNode(phone,this.head.next);
         }
-        else { // Scenario #3: We want to replace a node in the middle
+        else { // Scenario #3: We want to replace a node in the middle or the final node.
             CellNode t = this.head;
-            for(int i = 0; i < index -1; ++i) { // Move our pointer "t" to the node BEFORE the target index.
+            for(int i = 0; i < index - 1; ++i) { // Move our pointer "t" to the node BEFORE the target index.
                 t = t.next;
             }
-            t.next = new CellNode(phone,t.next);
+            t.next = new CellNode(phone,t.next.next);
             t = null; // Get rid of the backdoor to our linked list.
         }
+        System.out.println(c("g") + "Replaced node at index " + c("rs") + index + c("g") + " in list " + c("rs") + this + ".");
     }
+
+
+
+// USER METHODS
 
     /**
      * Method determines the size of the linked-list that called it.
      * @return The size of the linked-list that called the method.
      */
     public int findListSize(){
-        if(this.head == null)
-            return 0;
 
         CellNode t = this.head;
-        int sizeCtr = 1;
+        int sizeCtr = 0;
 
-        while(t.next != null){
+        while(t != null){
             t = t.next;
             ++sizeCtr;
         }
         t = null;
         return sizeCtr;
+    }
+    @Override
+    public String toString(){
+        return listName;
     }
 
 

@@ -1,7 +1,7 @@
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-public class CellPhone implements Cloneable {
+public class CellPhone extends c implements Cloneable {
 
     // Attributes
     private static long nextSN = 0;
