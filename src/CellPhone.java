@@ -26,6 +26,7 @@ public class CellPhone extends c implements Cloneable {
         this.year = year;
         this.price = price;
     }
+
     public CellPhone(CellPhone cellPhone, long serialNum){
         if(serialNum == nextSN)
             this.serialNum = serialNum;
@@ -109,7 +110,7 @@ public class CellPhone extends c implements Cloneable {
         return this.getBrand().equals(cell.getBrand()) && this.getPrice() == cell.getPrice() && this.getYear() == cell.getYear();
     }
     public static void main(String[] args) {
-        // TESTING (It works)
+     /*   // TESTING (It works)
         System.out.println("Next SN: " + CellPhone.nextSN);
         CellPhone iPhone = new CellPhone();
         System.out.println(iPhone);
@@ -198,7 +199,36 @@ public class CellPhone extends c implements Cloneable {
         }
 
         System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
+      */ // TEST #1
 
+        CellList L2 = new CellList();
+        L2.setListName("Schindler");
+
+        CellPhone iPhone = new CellPhone(69,"Apple",2001,69.99);
+        CellPhone NothingPhone = new CellPhone(69,"Nothing",2022,105.99);
+        CellPhone Moto = new CellPhone(69, "Motorola", 2016,120.99);
+
+        CellPhone[] cellArr = {iPhone, NothingPhone, Moto};
+
+        for(CellPhone phone : cellArr) {
+            L2.addToStart(phone);
+            System.out.println(phone);
+        }
+
+        System.out.println("\nCurrent list size: " + L2.findListSize());
+
+
+        CellPhone Pixel = new CellPhone(59, "Google", 2015, 323.99);
+        try {
+            L2.replaceAtIndex(Pixel, 7);
+        }
+        catch(NoSuchElementException e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println("\nCurrent list size: " + L2.findListSize());
+
+        System.out.println(Pixel.getSerialNum());
+        L2.find(1);
 
     }
 }

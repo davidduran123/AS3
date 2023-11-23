@@ -66,11 +66,17 @@ public class CellList extends c {
     public int getSize() {
         return size;
     }
+    public String getListName() {
+        return listName;
+    }
     public void setHead(CellNode head) {
         this.head = head;
     }
     public void setSize(int size) {
         this.size = size;
+    }
+    public void setListName(String listName) {
+        this.listName = listName;
     }
 
 // ACTION METHODS
@@ -83,7 +89,7 @@ public class CellList extends c {
         this.head = new CellNode(phone, this.head);
         this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         System.out.println(c("p") + "Added node at the start of list " + c("rs") + this);
-    }
+    } // TESTED : WORKS
 
     /**
      * Method deletes the first node in the linked list if it exits.
@@ -100,7 +106,7 @@ public class CellList extends c {
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
         System.out.println(c("c") + "Deleted node at the starting position in list " + c("rs") + this);
-    }
+    } // TESTED : WORKS
 
     /**
      * Method inserts a node at a specified index in the linked-list.
@@ -126,7 +132,7 @@ public class CellList extends c {
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
         System.out.println(c("b") + "Inserted node at index " + c("rs") + index + c("b") + " in list " + c("rs") + this + ".");
-    }
+    } // TESTED : WORKS
 
     /**
      * Method removes a node in a specified index of the list (if it exists) and adjusts size of the list accordingly.
@@ -150,7 +156,7 @@ public class CellList extends c {
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list
         }
         System.out.println(c("y") + "Deleted node at index " + c("rs") + index + c("y") + " in list " + c("rs") + this + ".");
-    }
+    } // TESTED : WORKS
 
     /**
      * Method that replaces a node at a certain index in the linked-list (if it exists).
@@ -160,7 +166,7 @@ public class CellList extends c {
      */
     public void replaceAtIndex(CellPhone phone, int index) throws NoSuchElementException {
         if(index < 0 || this.size == 0 || index > this.size - 1){ // Scenario #1: The index doesn't exist OR the linked list is empty.
-            throw new NoSuchElementException(c("r") + "ERROR: Cannot replace node at index " + c("rs") + index + c("r") + ", it doesn't exist in this list!" + c("rs"));
+            throw new NoSuchElementException(c("r") + "ERROR: Cannot replace node at index " + c("rs") + index + c("r") + " as it doesn't exist in list: " + c("rs") + this);
         }
         else if(index == 0) { // Scenario #2: We want to replace the first node.
             this.head = new CellNode(phone,this.head.next);
@@ -174,12 +180,28 @@ public class CellList extends c {
             t = null; // Get rid of the backdoor to our linked list.
         }
         System.out.println(c("g") + "Replaced node at index " + c("rs") + index + c("g") + " in list " + c("rs") + this + ".");
-    }
+    } // TESTED : WORKS
 
+    /**
+     * Method that scans through a linked-list with the goal of finding the CellPhone object containing the matching serial-number.
+     * @param serialNumber Long value to search for at each node containing a CellPhone object.
+     * @return The address of the node containing the CellPhone object with the matching serial number in memory.
+     */
     public CellNode find(long serialNumber){
-        int iterations = 0;
-
-    }
+        int numIter = 0;
+        CellNode t = this.head;
+        while(t != null && t.phone.getSerialNum() != serialNumber){
+           t  = t.next;
+           ++numIter;
+        }
+        if(t == null)
+            System.out.println(c("r") + "ERROR: No node containing a CellPhone object with serial-number " + c("rs") + serialNumber + c("r")+ " found in list " + c("rs") + this
+                    + c("p") + "\t # of iterations: " + c("rs") + numIter);
+        else if(t.phone.getSerialNum() == serialNumber)
+            System.out.println(c("g") + "CellPhone object with serial-number " + c("rs") + serialNumber + c("g") + " found in list " + c("rs") + this
+                    + c("p") + "\t # of iterations: " + c("rs") + numIter);
+        return t; // Return the address of the node OR null.
+    } // TESTED : WORKS
 
 
 // USER METHODS
