@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class CellPhone extends c implements Cloneable {
 
     // Attributes
-    private static long nextSN = 0;
+    private static long nextSN = 1000000;
     private long serialNum;
     private String brand;
     private int year;
@@ -93,12 +93,7 @@ public class CellPhone extends c implements Cloneable {
     }
     @Override
     public String toString() {
-        return "CellPhone{" +
-                "serialNum=" + serialNum +
-                ", brand='" + brand + '\'' +
-                ", year=" + year +
-                ", price=" + price +
-                '}';
+        return "[" + c("g") + this.serialNum + c("rs") + ": " + c("b") + this.brand + " " + c("y") + this.price + " " + c("p") + this.year + c("rs") + "]";
     }
     @Override
     public boolean equals(Object o) {
@@ -233,6 +228,12 @@ public class CellPhone extends c implements Cloneable {
 
         L2.contains(0);
         L2.contains(69);
+
+        L2.showContents();
+
+        CellList L3 = new CellList();
+
+        L3.showContents();
 
     }
 }

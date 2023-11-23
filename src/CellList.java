@@ -210,6 +210,11 @@ public class CellList extends c {
         return t; // Return the address of the node OR null.
     } // TESTED : WORKS
 
+    /**
+     * Method scans the linked-list to see if a target serial-number exists or not.
+     * @param serialNumber The target serial-number our method aims to find in our linked list.
+     * @return True if the SN is within our linked-list and False if not.
+     */
     public boolean contains(long serialNumber){
         CellNode t = this.head;
         while(t != null && t.phone.getSerialNum() != serialNumber){
@@ -222,6 +227,31 @@ public class CellList extends c {
         else{
             System.out.println(c("g") + "CellPhone object with serial-number " + c("rs") + serialNumber + c("g") + " was found in list: " + c("rs") + this);
             return true;
+        }
+    }
+
+    /**
+     * Method prints out the sequence and contents of each node in a linked-list in a clean format.
+     */
+    public void showContents(){
+        String header = c("it") + "\n\nThe current size of the list '" + c("BO") + c("g") + this + c("rs") + "' is " + c("it") + c("g") + this.size + c("rs") + c("it") + ". Here are the contents of the list" + c("rs");
+        System.out.println(header);
+        for(int i = 0; i < header.length() - 30; ++i) { System.out.print("="); }
+        System.out.println();
+
+        if(this.head == null)
+            System.out.println(c("r") + "head/ ---> X" + c("rs"));
+        else{
+            int printCntr = 0;
+            CellNode t = head;
+            while(t!= null){
+                System.out.print(t.phone + " ---> ");
+                t = t.next;
+                ++printCntr;
+                if(printCntr % 3 == 0 && t != null)
+                    System.out.println();
+            }
+            System.out.print(c("r") + "X" + c("rs"));
         }
     }
 

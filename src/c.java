@@ -12,16 +12,16 @@ public class c {
     public static String c(String colorName) {
         String colorSelected;
         switch(colorName.toUpperCase()) {
-            case "R" -> colorSelected = "\u001B[31m";     // Red text color
-            case "G" ->  colorSelected = "\u001B[32m";  // Green text color
+            case "R" -> colorSelected = "\u001B[31m";  // Red text color
+            case "G" ->  colorSelected = "\u001B[32m"; // Green text color
             case "Y" -> colorSelected = "\u001B[33m";  // Yellow text color
-            case "B" -> colorSelected = "\u001B[34m";    // Blue text color
+            case "B" -> colorSelected = "\u001B[34m";  // Blue text color
             case "P" -> colorSelected = "\u001B[35m";  // Purple text color
-            case "C" -> colorSelected = "\u001B[36m"; // Cyan text color
-            case "BO" -> colorSelected = "\u001B[1m"; // Bold text
-            case "IT" -> colorSelected = "\u001B[3m"; // Italic text
-            case "UN" -> colorSelected = "\u001B[4m"; // Underline text
-            case "RS" -> colorSelected = "\u001B[0m";    // White text color
+            case "C" -> colorSelected = "\u001B[36m";  // Cyan text color
+            case "BO" -> colorSelected = "\u001B[1m";  // Bold text
+            case "IT" -> colorSelected = "\u001B[3m";  // Italic text
+            case "UN" -> colorSelected = "\u001B[4m";  // Underline text
+            case "RS" -> colorSelected = "\u001B[0m";  // White text color
             default -> colorSelected = "\u001B[0m";
         }
         return colorSelected;
