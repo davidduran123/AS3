@@ -203,6 +203,21 @@ public class CellList extends c {
         return t; // Return the address of the node OR null.
     } // TESTED : WORKS
 
+    public boolean contains(long serialNumber){
+        CellNode t = this.head;
+        while(t != null && t.phone.getSerialNum() != serialNumber){
+            t = t.next;
+        }
+        if(t == null){
+            System.out.println(c("r") + "ERROR: Serial-number " + c("rs") + serialNumber + c("r") + " was NOT found in list: " + c("rs") + this);
+            return false;
+        }
+        else{
+            System.out.println(c("g") + "Serial-number " + c("rs") + serialNumber + c("g") + " was found in list: " + c("rs") + this);
+            return true;
+        }
+    }
+
 
 // USER METHODS
 
@@ -229,7 +244,6 @@ public class CellList extends c {
 
 
 // TO-DO
-    // PROCEED TO THE FIND()
     // FIX COPY CONSTRUCTOR FOR CellList
 
 
