@@ -229,6 +229,10 @@ public class CellPhone extends c implements Cloneable {
 
         System.out.println(Pixel.getSerialNum());
         L2.find(1);
+        L2.find(2);
+
+        L2.contains(0);
+        L2.contains(69);
 
     }
 }

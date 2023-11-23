@@ -187,6 +187,13 @@ public class CellList extends c {
      * @param serialNumber Long value to search for at each node containing a CellPhone object.
      * @return The address of the node containing the CellPhone object with the matching serial number in memory.
      */
+
+    /*
+    !!!! POTENTIAL PRIVACY LEAK !!!!
+    Returning an address to an object in memory is rarely a good idea as anyone who gets a hold on it can compromise it.
+    A safer alternative would be to return the index of the node holding the CellPhone object with the target serial-number.
+     */
+
     public CellNode find(long serialNumber){
         int numIter = 0;
         CellNode t = this.head;
@@ -209,11 +216,11 @@ public class CellList extends c {
             t = t.next;
         }
         if(t == null){
-            System.out.println(c("r") + "ERROR: Serial-number " + c("rs") + serialNumber + c("r") + " was NOT found in list: " + c("rs") + this);
+            System.out.println(c("r") + "ERROR: CellPhone object with serial-number " + c("rs") + serialNumber + c("r") + " was NOT found in list: " + c("rs") + this);
             return false;
         }
         else{
-            System.out.println(c("g") + "Serial-number " + c("rs") + serialNumber + c("g") + " was found in list: " + c("rs") + this);
+            System.out.println(c("g") + "CellPhone object with serial-number " + c("rs") + serialNumber + c("g") + " was found in list: " + c("rs") + this);
             return true;
         }
     }
