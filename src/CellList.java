@@ -82,23 +82,24 @@ public class CellList extends c {
     public void addToStart(CellPhone phone) {
         this.head = new CellNode(phone, this.head);
         this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
+        System.out.println(c("p") + "Added node at the start of list " + c("rs") + this);
     }
 
     /**
      * Method deletes the first node in the linked list if it exits.
      * If the list is empty, then the method lets the user know.
      */
-    public void deleteFromStart(){
+    public void deleteFromStart() throws NoSuchElementException{
         if(this.head == null) // Scenario #1 (List in empty)
-            System.out.println("ERROR: No node to delete, list is empty!");
+            throw new NoSuchElementException(c("r") + "ERROR: Cannot delete node at start as it doesn't exist in list " + c("rs") + this);
         else { // Scenario #2 (List has at least one node)
             CellNode t = this.head;
             this.head = t.next;
             t.next = null;
             t = null;
-
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
+        System.out.println(c("c") + "Deleted node at the starting position in list " + c("rs") + this);
     }
 
     /**
@@ -109,7 +110,7 @@ public class CellList extends c {
      */
     public void insertAtIndex(CellPhone phone, int index) throws NoSuchElementException {
         if(index < 0 || index > this.size - 1){ // Scenario #1: The list has nodes, but the index doesn't exist!
-            throw new NoSuchElementException("ERROR: Cannot insert node at index " + index + " as it does not exist in this list!");
+            throw new NoSuchElementException(c("r") + "ERROR: Cannot insert node at index "+ c("rs") + index + c("r")+ " as it doesn't exist in list " + c("rs") + this);
         }
         else if(this.size == 0) { // Scenario #2: List is empty.
             addToStart(phone);
@@ -124,6 +125,7 @@ public class CellList extends c {
 
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
+        System.out.println(c("b") + "Inserted node at index " + c("rs") + index + c("b") + " in list " + c("rs") + this + ".");
     }
 
     /**
@@ -132,7 +134,7 @@ public class CellList extends c {
      */
     public void deleteFromIndex(int index) {
         if(index < 0 || index > this.size - 1 || this.size == 0){ // Scenario #1: The index doesn't exist OR the linked list is empty.
-            throw new NoSuchElementException(c("r") + "ERROR: Node at index "+ c("rs") + index + c("r")+ " can't be deleted, it doesn't exist in this list!" + c("rs"));
+            throw new NoSuchElementException(c("r") + "ERROR: Node at index "+ c("rs") + index + c("r")+ " can't be deleted, it doesn't exist in list " + c("rs") + this);
         }
         else if(this.size == 1) { // Scenario #2: List contains one node.
             this.head = null;
@@ -150,6 +152,12 @@ public class CellList extends c {
         System.out.println(c("y") + "Deleted node at index " + c("rs") + index + c("y") + " in list " + c("rs") + this + ".");
     }
 
+    /**
+     * Method that replaces a node at a certain index in the linked-list (if it exists).
+     * @param phone CellPhone object to be held in the CellNode object.
+     * @param index Index that the input node must replace.
+     * @throws NoSuchElementException Thrown if input index doesn't exist.
+     */
     public void replaceAtIndex(CellPhone phone, int index) throws NoSuchElementException {
         if(index < 0 || this.size == 0 || index > this.size - 1){ // Scenario #1: The index doesn't exist OR the linked list is empty.
             throw new NoSuchElementException(c("r") + "ERROR: Cannot replace node at index " + c("rs") + index + c("r") + ", it doesn't exist in this list!" + c("rs"));
@@ -168,6 +176,10 @@ public class CellList extends c {
         System.out.println(c("g") + "Replaced node at index " + c("rs") + index + c("g") + " in list " + c("rs") + this + ".");
     }
 
+    public CellNode find(long serialNumber){
+        int iterations = 0;
+
+    }
 
 
 // USER METHODS
@@ -194,7 +206,9 @@ public class CellList extends c {
     }
 
 
-
+// TO-DO
+    // PROCEED TO THE FIND()
+    // FIX COPY CONSTRUCTOR FOR CellList
 
 
 

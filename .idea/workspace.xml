@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Comp249_F23_Assg3.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Comp249_F23_Assg3.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CellList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CellList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CellPhone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CellPhone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +50,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="CellPhone" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CellPhone" />
+      <module name="AS3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CellPhone" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,7 +76,7 @@
       <workItem from="1700244656853" duration="2561000" />
       <workItem from="1700415519643" duration="19214000" />
       <workItem from="1700509295235" duration="1208000" />
-      <workItem from="1700671872041" duration="6391000" />
+      <workItem from="1700671872041" duration="11133000" />
     </task>
     <servers />
   </component>
