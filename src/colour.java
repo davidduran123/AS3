@@ -1,7 +1,7 @@
 /**
  * Class that houses the c() that allows you to colour your text however you want.
  */
-public class c {
+public class colour {
     /**
      * Used to color a string in red, green, yellow, blue or purple.
      * (e.g.:) Driver1.colorMyText("GREEN") + "hello" + Driver1.colorMyText("RESET") + "world";

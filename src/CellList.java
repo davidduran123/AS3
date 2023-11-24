@@ -1,6 +1,8 @@
+import java.sql.SQLOutput;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-public class CellList extends c {
+public class CellList extends colour {
     // INNER CLASS
     class CellNode implements Cloneable {
     // ATTRIBUTES
@@ -299,6 +301,34 @@ public class CellList extends c {
         }
         return true;
     }
+
+    public void findDuplicateSNs(){
+        long[] SNArr = new long[this.size]; // Array of serial numbers in a linked list
+        int[] dupCtr = new int[this.size]; // # of duplicates
+
+        CellNode t = this.head;
+        for(int i = 0; i < SNArr.length; ++i){ // Create array of SNs
+            SNArr[i] = t.phone.getSerialNum();
+            t = t.next;
+        }
+        for(int i = 0; i < SNArr.length; ++i){ //
+            int duplicateCtr = 0;
+
+            for(int j = 0; j < SNArr.length; ++j){
+                if(j == i)
+                    continue;
+                if(SNArr[i] == SNArr[j])
+                    ++duplicateCtr;
+            }
+            dupCtr[i] = duplicateCtr;
+        }
+
+
+
+        System.out.println(Arrays.toString(SNArr) + "\n" + Arrays.toString(dupCtr));
+    }
+
+
 // USER METHODS
 
     /**
@@ -322,10 +352,6 @@ public class CellList extends c {
         return listName;
     }
 
-
 // TO-DO
     // FIX COPY CONSTRUCTOR FOR CellList
-
-
-
 }

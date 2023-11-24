@@ -1,10 +1,10 @@
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-public class CellPhone extends c implements Cloneable {
+public class CellPhone extends colour implements Cloneable {
 
     // Attributes
-    private static long nextSN = 0000000;
+    private static long nextSN = 1000000;
     private long serialNum;
     private String brand;
     private int year;
@@ -18,20 +18,14 @@ public class CellPhone extends c implements Cloneable {
         this.price = 0.00;
     }
     public CellPhone(long serialNum, String brand, int year, double price) {
-        if(serialNum == nextSN)
-            this.serialNum = serialNum;
-        else
-            this.serialNum = nextSN++;
+        this.serialNum = serialNum;
         this.brand = brand;
         this.year = year;
         this.price = price;
     }
 
     public CellPhone(CellPhone cellPhone, long serialNum){
-        if(serialNum == nextSN)
-            this.serialNum = serialNum;
-        else
-            this.serialNum = nextSN++;
+        this.serialNum = serialNum;
         this.brand = cellPhone.getBrand();
         this.year = cellPhone.getYear();
         this.price = cellPhone.getPrice();
@@ -104,6 +98,7 @@ public class CellPhone extends c implements Cloneable {
         CellPhone cell = (CellPhone) o;
         return this.getBrand().equals(cell.getBrand()) && this.getPrice() == cell.getPrice() && this.getYear() == cell.getYear();
     }
+
     public static void main(String[] args) {
      /*   // TESTING (It works)
         System.out.println("Next SN: " + CellPhone.nextSN);
@@ -195,7 +190,7 @@ public class CellPhone extends c implements Cloneable {
 
         System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
       */ // TEST #1
-
+        /*
         CellList L2 = new CellList();
         L2.setListName("Schindler");
 
@@ -253,6 +248,7 @@ public class CellPhone extends c implements Cloneable {
         CellList EL = new CellList();
 
         L2.equals(EL);
+         */ // TEST #2
 
     }
 }
