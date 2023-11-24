@@ -157,7 +157,7 @@ public class CellList extends colour {
             t = null;
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list
         }
-        System.out.println(c("y") + "Deleted node at index " + c("rs") + index + c("y") + " in list " + c("rs") + this + ".");
+        System.out.println("\n" + c("y") + "Deleted node at index " + c("rs") + index + c("y") + " in list " + c("rs") + this + ".");
     } // TESTED : WORKS
 
     /**
@@ -303,26 +303,26 @@ public class CellList extends colour {
     }
 
     public void fixSNDplcts(){ // W I P
+        System.out.println(c("r") + c("it") + "\n*** GETTING RID OF DUPLICATE SERIAL NUMBER ENTRIES ***" + c("rs"));
+
         CellNode t1 = this.head, t2;
         for(int i = 0; t1 != null; ++i){ // Set "t1" at a node (starting from head)
             t2 = this.head;
             for(int j = 0; t2 != null; ++j){ // Scan the whole linked list (till null) for duplicates
-                if(j == i){ // Skip the index that "t1" is currently at
+                if(t2 == t1){ // Skip the index that "t1" is currently at
                     t2 = t2.next;
                     continue;
                 }
                 if(t1.phone.getSerialNum() == t2.phone.getSerialNum()){ // There's a duplicate .:. delete it
                     this.deleteFromIndex(j);
-                    this.showContents();
+                    break;
                 }
                 t2 = t2.next;
             }
             t1 = t1.next;
         }
-
+        System.out.println(c("r") + c("it") + "\n******************************************************" + c("rs"));
     }
-
-
 
 // USER METHODS
 
