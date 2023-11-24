@@ -302,31 +302,26 @@ public class CellList extends colour {
         return true;
     }
 
-    public void findDuplicateSNs(){
-        long[] SNArr = new long[this.size]; // Array of serial numbers in a linked list
-        int[] dupCtr = new int[this.size]; // # of duplicates
-
-        CellNode t = this.head;
-        for(int i = 0; i < SNArr.length; ++i){ // Create array of SNs
-            SNArr[i] = t.phone.getSerialNum();
-            t = t.next;
-        }
-        for(int i = 0; i < SNArr.length; ++i){ //
-            int duplicateCtr = 0;
-
-            for(int j = 0; j < SNArr.length; ++j){
-                if(j == i)
+    public void fixSNDplcts(){ // W I P
+        CellNode t1 = this.head, t2;
+        for(int i = 0; t1 != null; ++i){ // Set "t1" at a node (starting from head)
+            t2 = this.head;
+            for(int j = 0; t2 != null; ++j){ // Scan the whole linked list (till null) for duplicates
+                if(j == i){ // Skip the index that "t1" is currently at
+                    t2 = t2.next;
                     continue;
-                if(SNArr[i] == SNArr[j])
-                    ++duplicateCtr;
+                }
+                if(t1.phone.getSerialNum() == t2.phone.getSerialNum()){ // There's a duplicate .:. delete it
+                    this.deleteFromIndex(j);
+                    this.showContents();
+                }
+                t2 = t2.next;
             }
-            dupCtr[i] = duplicateCtr;
+            t1 = t1.next;
         }
 
-
-
-        System.out.println(Arrays.toString(SNArr) + "\n" + Arrays.toString(dupCtr));
     }
+
 
 
 // USER METHODS

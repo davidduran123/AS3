@@ -36,7 +36,9 @@ public class CellListUtilization {
         }
         CL1.showContents();
 
-        CL1.findDuplicateSNs();
+        CL1.fixSNDplcts();
+
+        CL1.showContents();
 
 
 
