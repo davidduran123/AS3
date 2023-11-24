@@ -256,31 +256,43 @@ public class CellList extends c {
         }
     }
 
+    /**
+     * Method that compares the contents of one linked list to another.
+     * @param list Linked-list that we'll compare the one that called the method to.
+     * @return True if both linked lists contain the same CellPhone objects in their nodes (regardless of the order).
+     *         False otherwise.
+     */
     public boolean equals(CellList list) {
         // Creating travel-pointers
         CellNode t1, t2;
         t1 = this.head; // Pointer to travel across the linked-list calling the method.
-        int indexCtr = 0;
-
+        int indexCtr1 = 0, indexCtr2; // To keep track at what index our pointers are at.
         while(t1 != null){
             t2 = list.head; // Pointer to travel across the linked-list that is passed as a parameter.
+            indexCtr2 = 0;
             while(t2 != null && !t1.phone.equals(t2.phone)) {
                 t2 = t2.next;
+                ++indexCtr2;
             }
             if(t2 == null){
-                System.out.println(c("r") + "Lists '" + c("rs") + this + c("r") + "' and '" + c("rs") + list + c("r") + "' do NOT hold similar objects!" + c("rs")
-                + "\nNo match found for node at index: " + indexCtr);
+                if(indexCtr2 == 0){
+                    System.out.println(c("r") + "Comparison list '" + c("rs") + list + c("r") + "' is empty!" + c("rs"));
+                }
+                else {
+                    System.out.println(c("r") + "Lists '" + c("rs") + this + c("r") + "' and '" + c("rs") + list + c("r") + "' do NOT hold similar objects!" + c("rs")
+                            + "\nNo match found for node at index #" + indexCtr1 + " in list '" + this + "'");
+                }
                 return false;
             }
             else {
                 if(t1.next == null){
-                    System.out.println("Node at index #" + indexCtr + " in list '" + this + "' found a match in list '" + list + "'" +
+                    System.out.println("Node at index #" + indexCtr1 + " in list '" + this + "' found a match in list '" + list + "'" +
                             "\nComparison process will terminate as final node in list '" + this + "' has been verified");
                 }
                 else{
-                    System.out.println("Node at index #" + indexCtr + " in list '" + this + "' found a match in list '" + list + "'" +
-                            "\nProceeding to node at index #" + (indexCtr + 1) + " in list '" + this + "' for comparison");
-                    ++indexCtr;
+                    System.out.println("Node at index #" + indexCtr1 + " in list '" + this + "' found a match in list '" + list + "'" +
+                            "\nProceeding to node at index #" + (indexCtr1 + 1) + " in list '" + this + "' for comparison");
+                    ++indexCtr1;
                 }
                 t1 = t1.next;
             }

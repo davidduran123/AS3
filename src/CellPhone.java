@@ -250,5 +250,9 @@ public class CellPhone extends c implements Cloneable {
 
         L2.equals(L3);
 
+        CellList EL = new CellList();
+
+        L2.equals(EL);
+
     }
 }
