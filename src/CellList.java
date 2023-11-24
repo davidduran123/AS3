@@ -53,7 +53,7 @@ public class CellList extends c {
         this.head = null;
         this.size = 0;
     }
-    public CellList(CellList listToCopy){ // To be modified to what we saw in lecture!
+    public CellList(CellList listToCopy){ // To be modified to what we saw in lecture! We want a DEEP copy!
         this.head = listToCopy.getHead();
         this.size = listToCopy.getSize();
     }
@@ -234,7 +234,8 @@ public class CellList extends c {
      * Method prints out the sequence and contents of each node in a linked-list in a clean format.
      */
     public void showContents(){
-        String header = c("it") + "\n\nThe current size of the list '" + c("BO") + c("g") + this + c("rs") + "' is " + c("it") + c("g") + this.size + c("rs") + c("it") + ". Here are the contents of the list" + c("rs");
+        String header = c("it") + "\n\nThe current size of the list '" + c("BO") + c("g") + this + c("rs") + "' is " + c("it") + c("g") + this.size + c("rs") + c("it")
+                + ". Here are the contents of the list" + c("rs");
         System.out.println(header);
         for(int i = 0; i < header.length() - 30; ++i) { System.out.print("="); }
         System.out.println();
@@ -251,11 +252,41 @@ public class CellList extends c {
                 if(printCntr % 3 == 0 && t != null)
                     System.out.println();
             }
-            System.out.print(c("r") + "X" + c("rs"));
+            System.out.println(c("r") + "X" + c("rs") + "\n");
         }
     }
 
+    public boolean equals(CellList list) {
+        // Creating travel-pointers
+        CellNode t1, t2;
+        t1 = this.head; // Pointer to travel across the linked-list calling the method.
+        int indexCtr = 0;
 
+        while(t1 != null){
+            t2 = list.head; // Pointer to travel across the linked-list that is passed as a parameter.
+            while(t2 != null && !t1.phone.equals(t2.phone)) {
+                t2 = t2.next;
+            }
+            if(t2 == null){
+                System.out.println(c("r") + "Lists '" + c("rs") + this + c("r") + "' and '" + c("rs") + list + c("r") + "' do NOT hold similar objects!" + c("rs")
+                + "\nNo match found for node at index: " + indexCtr);
+                return false;
+            }
+            else {
+                if(t1.next == null){
+                    System.out.println("Node at index #" + indexCtr + " in list '" + this + "' found a match in list '" + list + "'" +
+                            "\nComparison process will terminate as final node in list '" + this + "' has been verified");
+                }
+                else{
+                    System.out.println("Node at index #" + indexCtr + " in list '" + this + "' found a match in list '" + list + "'" +
+                            "\nProceeding to node at index #" + (indexCtr + 1) + " in list '" + this + "' for comparison");
+                    ++indexCtr;
+                }
+                t1 = t1.next;
+            }
+        }
+        return true;
+    }
 // USER METHODS
 
     /**

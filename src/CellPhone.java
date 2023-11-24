@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class CellPhone extends c implements Cloneable {
 
     // Attributes
-    private static long nextSN = 1000000;
+    private static long nextSN = 0000000;
     private long serialNum;
     private String brand;
     private int year;
@@ -207,7 +207,6 @@ public class CellPhone extends c implements Cloneable {
 
         for(CellPhone phone : cellArr) {
             L2.addToStart(phone);
-            System.out.println(phone);
         }
 
         System.out.println("\nCurrent list size: " + L2.findListSize());
@@ -231,9 +230,25 @@ public class CellPhone extends c implements Cloneable {
 
         L2.showContents();
 
-        CellList L3 = new CellList();
 
+        CellList L3 = new CellList();
+        L3.setListName("Bobby");
+
+        CellPhone iPhone12 = new CellPhone(54, "Apple", 2019, 700);
+        CellPhone Pixel2 = new CellPhone(54, "Google", 2024, 1000);
+        CellPhone GalaxyS13 = new CellPhone(54, "Samsung", 2025, 900);
+
+        CellPhone NothingPhone2 = new CellPhone(69,"Nothing",2022,105.99);
+        CellPhone Moto2 = new CellPhone(69, "Motorola", 2016,120.99);
+
+        CellPhone[] cellArr2 = {iPhone12, NothingPhone2, Moto2};
+
+        for(CellPhone phone : cellArr2) {
+            L3.addToStart(phone);
+        }
         L3.showContents();
+
+        L2.equals(L3);
 
     }
 }
