@@ -11,20 +11,20 @@ public class CellPhone extends colour implements Cloneable {
     private double price;
 
     // Constructors
-    public CellPhone() {
+    public CellPhone() { // Create a CellPhone object
         this.serialNum = CellPhone.nextSN++;
         this.brand = "N/A";
         this.year = 0;
         this.price = 0.00;
     }
-    public CellPhone(long serialNum, String brand, int year, double price) {
+    public CellPhone(long serialNum, String brand, int year, double price) { // Create a custom CellPhone object
         this.serialNum = serialNum;
         this.brand = brand;
         this.year = year;
         this.price = price;
     }
 
-    public CellPhone(CellPhone cellPhone, long serialNum){
+    public CellPhone(CellPhone cellPhone, long serialNum){ // Create HARD COPY of a CellPhone object
         this.serialNum = serialNum;
         this.brand = cellPhone.getBrand();
         this.year = cellPhone.getYear();

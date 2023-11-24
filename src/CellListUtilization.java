@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class CellListUtilization extends colour {
     public static void main(String[] args) {
 
@@ -48,7 +47,7 @@ public class CellListUtilization extends colour {
 
 
         while(!exit) {
-            System.out.print("\nEnter a serial-number to look-up or enter '-1' to exit: ");
+            System.out.print("\nEnter a serial-number to look-up in list " + CL1 + " or enter '-1' to exit: ");
             valSN = false;
             while(!valSN) {
                 try {
@@ -68,6 +67,11 @@ public class CellListUtilization extends colour {
             }
         }
         System.out.println(c("r") + "\nExit!" + c("rs"));
+
+
+// TO-DO
+//      1: Continue fixing the CellList copy constructor.
+//          a)
 
 
 

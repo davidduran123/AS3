@@ -15,17 +15,23 @@ public class CellList extends colour {
             next = null;
         }
 
-        public CellNode (CellPhone phone, CellNode node){
+        public CellNode (CellPhone phone, CellNode node){ // Create a custom node.
             this.phone = phone;
             this.next = node;
         }
 
-        public CellNode (CellNode another){ // Create a copy of a node.
-            this.phone = another.phone;
+        public CellNode (CellNode another){ // Create HARD COPY of a node.
+            try{
+                this.phone = another.phone.clone(); // This creates a SHALLOW copy of a CellPhone object.
+            }
+            catch(CloneNotSupportedException e) {
+                System.out.println(e.getMessage());
+            }
+
             this.next = another.next;
         }
     // CUSTOM
-        public CellNode clone() throws CloneNotSupportedException {
+        public CellNode clone() throws CloneNotSupportedException { // Create a new CellNode object & copies all attributes
             return (CellNode)super.clone();
         }
     // SET & GET
@@ -50,14 +56,20 @@ public class CellList extends colour {
     private String listName;
 
 // CONSTRUCTORS
-
-    public CellList(){
+    public CellList() {
         this.head = null;
         this.size = 0;
+        this.listName = "Nameless";
     }
-    public CellList(CellList listToCopy){ // To be modified to what we saw in lecture! We want a DEEP copy!
-        this.head = listToCopy.getHead();
-        this.size = listToCopy.getSize();
+
+    public CellList(CellList list){ // Fix to DEEP copy!
+        CellList copy = new CellList();
+        copy.setListName(list.getListName() + "-copy");
+        CellNode t1, t2;
+        t1 = list.head;
+
+
+
     }
 
 // SET & GET
@@ -302,6 +314,9 @@ public class CellList extends colour {
         return true;
     }
 
+    /**
+     * Method finds CellPhone objects with duplicate SNs in a linked-list, then removes all duplicates from it.
+     */
     public void fixSNDplcts(){ // W I P
         System.out.println(c("r") + c("it") + "\n*** GETTING RID OF DUPLICATE SERIAL NUMBER ENTRIES ***" + c("rs"));
 
@@ -342,11 +357,9 @@ public class CellList extends colour {
         t = null;
         return sizeCtr;
     }
+
     @Override
     public String toString(){
         return listName;
     }
-
-// TO-DO
-    // FIX COPY CONSTRUCTOR FOR CellList
 }
