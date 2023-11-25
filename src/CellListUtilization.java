@@ -37,14 +37,13 @@ public class CellListUtilization extends colour {
         file.close();
 
         CL1.showContents();
-        CL1.fixSNDplcts();
+        CL1.fixSNDuplicates();
         CL1.showContents();
 
         Scanner kbr = new Scanner(System.in);
         boolean exit = false;
         boolean valSN = false;
         long inSN = -2;
-
 
         while(!exit) {
             System.out.print("\nEnter a serial-number to look-up in list " + CL1 + " or enter '-1' to exit: ");
@@ -65,7 +64,11 @@ public class CellListUtilization extends colour {
             else {
                 CL1.find(inSN);
             }
-        }
+        } // Prompting user to look up SN in our linked list.
         System.out.println(c("r") + "\nExit!" + c("rs"));
     }
+
+    // Testing My Methods
+
+
 }

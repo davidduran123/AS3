@@ -1,9 +1,9 @@
-import java.sql.SQLOutput;
-import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class CellList extends colour {
-    // INNER CLASS
+
+// INNER CLASS
+
     class CellNode implements Cloneable {
     // ATTRIBUTES
         private CellPhone phone; // What the node contains.
@@ -59,6 +59,7 @@ public class CellList extends colour {
     private String listName;
 
 // CONSTRUCTORS
+
     public CellList() {
         this.head = null;
         this.size = 0;
@@ -349,7 +350,7 @@ public class CellList extends colour {
     /**
      * Method finds CellPhone objects with duplicate SNs in a linked-list, then removes all duplicates from it.
      */
-    public void fixSNDplcts(){ // W I P
+    public void fixSNDuplicates(){ // W I P
         System.out.println(c("r") + c("it") + "\n*** GETTING RID OF DUPLICATE SERIAL NUMBER ENTRIES ***" + c("rs"));
 
         CellNode t1 = this.head, t2;
@@ -370,8 +371,6 @@ public class CellList extends colour {
         }
         System.out.println(c("r") + c("it") + "\n******************************************************" + c("rs"));
     }
-
-// USER METHODS
 
     /**
      * Method determines the size of the linked-list that called it.

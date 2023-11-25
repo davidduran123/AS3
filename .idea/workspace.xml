@@ -82,7 +82,7 @@
       <workItem from="1700509295235" duration="1208000" />
       <workItem from="1700671872041" duration="17615000" />
       <workItem from="1700776685845" duration="25104000" />
-      <workItem from="1700838237646" duration="15227000" />
+      <workItem from="1700838237646" duration="17221000" />
     </task>
     <servers />
   </component>
@@ -94,17 +94,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/CellList.java</url>
-          <line>236</line>
+          <line>237</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/CellList.java</url>
-          <line>33</line>
-          <properties class="CellList.CellNode" method="clone">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
