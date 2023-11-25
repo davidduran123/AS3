@@ -68,6 +68,8 @@ public class CellList extends colour {
 
     public CellList(CellList list){ // Fix to DEEP copy!
         this.setListName(list.getListName() + " - copy");
+        this.setSize(list.getSize());
+
         CellNode t1, t2, t3;
         t1 = list.head; // Scans through the OG linked list
         t2 = null; // Keeps track of our cloned nodes
@@ -75,34 +77,33 @@ public class CellList extends colour {
         while(t1 != null) {
             try {
                 t2 = t1.clone();
-                System.out.println("Pointer 't2' is at new node in NEW list.");
-                System.out.println("Created a node clone!");
+//                System.out.println("Pointer 't2' is at new node in NEW list.");
+//                System.out.println("Created a node clone!");
             }
             catch(CloneNotSupportedException e) {
                 System.out.println(e.getMessage());
             }
             if(t1 == list.head){ // If "t1" is at head-node (this will only happen once)
-                System.out.println("Pointer 't1' is at first node in OG list.");
+//                System.out.println("Pointer 't1' is at first node in OG list.");
                 this.head = t2;
-                System.out.println("Pointer 't2' is at first node in NEW list.");
+//                System.out.println("Pointer 't2' is at first node in NEW list.");
                 t2.next = null; // Make the cloned node point to null
                 t3 = this.head;
-                System.out.println("Pointer 't3' is at first node in NEW list.");
+//                System.out.println("Pointer 't3' is at first node in NEW list.");
             }
             else {
                 t2.next = null; // Make the new node point to null.
                 t3.next = t2; // Make the previous created node point to the new node.
                 t3 = t3.next; // Move t3 to the new node.
-                System.out.println("Pointer 't3' has moved up a node in NEW list.");
+//                System.out.println("Pointer 't3' has moved up a node in NEW list.");
             }
             t1 = t1.next;
-            System.out.println("Pointer 't1' has moved up a node in OG list.");
+//            System.out.println("Pointer 't1' has moved up a node in OG list.");
         }
         System.out.println("DEEP COPY of '" + list + "' has been completed.");
         t1 = null;
         t2 = null;
         t3 = null;
-        this.showContents();
     }
 
 // SET & GET
@@ -135,7 +136,7 @@ public class CellList extends colour {
     public void addToStart(CellPhone phone) {
         this.head = new CellNode(phone, this.head);
         this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
-        System.out.println(c("p") + "Added node at the start of list " + c("rs") + this);
+        System.out.println(c("p") + "\nAdded node at the start of list " + c("rs") + this);
     } // TESTED : WORKS
 
     /**
@@ -152,7 +153,7 @@ public class CellList extends colour {
             t = null;
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
-        System.out.println(c("c") + "Deleted node at the starting position in list " + c("rs") + this);
+        System.out.println(c("c") + "\nDeleted node at the starting position in list " + c("rs") + this);
     } // TESTED : WORKS
 
     /**
@@ -178,7 +179,7 @@ public class CellList extends colour {
 
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
         }
-        System.out.println(c("b") + "Inserted node at index " + c("rs") + index + c("b") + " in list " + c("rs") + this + ".");
+        System.out.println(c("b") + "\nInserted node at index " + c("rs") + index + c("b") + " in list " + c("rs") + this + ".");
     } // TESTED : WORKS
 
     /**
@@ -202,7 +203,7 @@ public class CellList extends colour {
             t = null;
             this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list
         }
-        System.out.println("\n" + c("y") + "Deleted node at index " + c("rs") + index + c("y") + " in list " + c("rs") + this + ".");
+        System.out.println("\n" + c("y") + "\nDeleted node at index " + c("rs") + index + c("y") + " in list " + c("rs") + this + ".");
     } // TESTED : WORKS
 
     /**
@@ -226,7 +227,7 @@ public class CellList extends colour {
             t.next = new CellNode(phone,t.next.next);
             t = null; // Get rid of the backdoor to our linked list.
         }
-        System.out.println(c("g") + "Replaced node at index " + c("rs") + index + c("g") + " in list " + c("rs") + this + ".");
+        System.out.println(c("g") + "\nReplaced node at index " + c("rs") + index + c("g") + " in list " + c("rs") + this + ".");
     } // TESTED : WORKS
 
     /**
@@ -313,6 +314,12 @@ public class CellList extends colour {
         // Creating travel-pointers
         CellNode t1, t2;
         t1 = this.head; // Pointer to travel across the linked-list calling the method.
+
+        if(t1 == null) {  // If the list calling the method is empty
+            System.out.println(c("r") + "Comparison list '" + c("rs") + this + c("r") + "' is empty!" + c("rs"));
+            return false;
+        }
+
         int indexCtr1 = 0, indexCtr2; // To keep track at what index our pointers are at.
         while(t1 != null){
             t2 = list.head; // Pointer to travel across the linked-list that is passed as a parameter.
@@ -335,6 +342,7 @@ public class CellList extends colour {
                 if(t1.next == null){
                     System.out.println("Node at index #" + indexCtr1 + " in list '" + this + "' found a match in list '" + list + "'" +
                             "\nComparison process will terminate as final node in list '" + this + "' has been verified");
+                    System.out.println(c("g") + "Lists '" + c("rs") + this + c("g") + "' and '" + c("rs") + list + c("g") + "' DO hold similar objects!" + c("rs"));
                 }
                 else{
                     System.out.println("Node at index #" + indexCtr1 + " in list '" + this + "' found a match in list '" + list + "'" +
