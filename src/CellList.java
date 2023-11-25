@@ -22,17 +22,20 @@ public class CellList extends colour {
 
         public CellNode (CellNode another){ // Create HARD COPY of a node.
             try{
-                this.phone = another.phone.clone(); // This creates a SHALLOW copy of a CellPhone object.
+                this.phone = another.phone.clone(); // This creates a HARD COPY of a CellPhone object
             }
             catch(CloneNotSupportedException e) {
                 System.out.println(e.getMessage());
             }
-
             this.next = another.next;
         }
     // CUSTOM
+        @Override
         public CellNode clone() throws CloneNotSupportedException { // Create a new CellNode object & copies all attributes
-            return (CellNode)super.clone();
+            CellNode cloneOfNode = (CellNode)super.clone(); // HARD COPY of node made but SHALLOW COPY made of CellPhone object inside.
+            CellPhone hrdCpyOfPhone = this.phone.clone(); // Create a HARD COPY of the CellPhone object in the OG node
+            cloneOfNode.setPhone(hrdCpyOfPhone); // Make the NEW node point to the NEW CellPhone object.
+            return cloneOfNode;
         }
     // SET & GET
         public CellPhone getPhone() {
@@ -67,7 +70,20 @@ public class CellList extends colour {
         copy.setListName(list.getListName() + "-copy");
         CellNode t1, t2;
         t1 = list.head;
+        t2 = null;
+        while(t1 != null) {
+            try {
+                t2 = t1.clone();
+                System.out.println("Created a node clone!");
+            }
+            catch(CloneNotSupportedException e) {
+                System.out.println(e.getMessage());
+            }
+            if(t1 == list.head) // If "t1" is at the beginning
+                this.head = t2;
+            t1 = t1.next;
 
+        }
 
 
     }
