@@ -62,30 +62,46 @@ public class CellList extends colour {
     public CellList() {
         this.head = null;
         this.size = 0;
-        this.listName = "Nameless";
+        this.listName = "Empty List";
     }
 
     public CellList(CellList list){ // Fix to DEEP copy!
-        CellList copy = new CellList();
-        copy.setListName(list.getListName() + "-copy");
-        CellNode t1, t2;
-        t1 = list.head;
-        t2 = null;
+        this.setListName(list.getListName() + " - copy");
+        CellNode t1, t2, t3;
+        t1 = list.head; // Scans through the OG linked list
+        t2 = null; // Keeps track of our cloned nodes
+        t3 = null; // Keeps track of the node created on the previous iteration
         while(t1 != null) {
             try {
                 t2 = t1.clone();
+                System.out.println("Pointer 't2' is at new node in NEW list.");
                 System.out.println("Created a node clone!");
             }
             catch(CloneNotSupportedException e) {
                 System.out.println(e.getMessage());
             }
-            if(t1 == list.head) // If "t1" is at the beginning
+            if(t1 == list.head){ // If "t1" is at head-node (this will only happen once)
+                System.out.println("Pointer 't1' is at first node in OG list.");
                 this.head = t2;
+                System.out.println("Pointer 't2' is at first node in NEW list.");
+                t2.next = null; // Make the cloned node point to null
+                t3 = this.head;
+                System.out.println("Pointer 't3' is at first node in NEW list.");
+            }
+            else {
+                t2.next = null; // Make the new node point to null.
+                t3.next = t2; // Make the previous created node point to the new node.
+                t3 = t3.next; // Move t3 to the new node.
+                System.out.println("Pointer 't3' has moved up a node in NEW list.");
+            }
             t1 = t1.next;
-
+            System.out.println("Pointer 't1' has moved up a node in OG list.");
         }
-
-
+        System.out.println("DEEP COPY of '" + list + "' has been completed.");
+        t1 = null;
+        t2 = null;
+        t3 = null;
+        this.showContents();
     }
 
 // SET & GET

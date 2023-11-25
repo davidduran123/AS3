@@ -67,14 +67,5 @@ public class CellListUtilization extends colour {
             }
         }
         System.out.println(c("r") + "\nExit!" + c("rs"));
-
-
-// TO-DO
-//      1: Continue fixing the CellList copy constructor.
-//          a)
-
-
-
-
     }
 }

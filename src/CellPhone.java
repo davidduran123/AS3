@@ -190,7 +190,6 @@ public class CellPhone extends colour implements Cloneable {
 
         System.out.println("This list has " + CL1.getSize() + " node(s)."); // WORKS
       */ // TEST #1
-        /*
         CellList L2 = new CellList();
         L2.setListName("Schindler");
 
@@ -248,7 +247,10 @@ public class CellPhone extends colour implements Cloneable {
         CellList EL = new CellList();
 
         L2.equals(EL);
-         */ // TEST #2
 
-    }
+        CellList ELCopy = new CellList(EL);
+
+
+
+    } // TESTING GROUNDS
 }
