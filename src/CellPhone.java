@@ -1,3 +1,14 @@
+// ----------------------------------------------------------------------
+// Assignment #3
+// Written by: David Duran Fuentes (40264877)  Rayel Hadj Said (40265536)
+// ----------------------------------------------------------------------
+/**
+ * Name(s) and ID(s):   David Duran Fuentes (40264877)  Rayel Hadj Said(40265536)
+ * COMP249
+ * Assignment #3
+ * Due Date: December 2nd @11:59PM
+ */
+
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;

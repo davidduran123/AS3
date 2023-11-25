@@ -1,3 +1,14 @@
+// ----------------------------------------------------------------------
+// Assignment #3
+// Written by: David Duran Fuentes (40264877)  Rayel Hadj Said (40265536)
+// ----------------------------------------------------------------------
+/**
+ * Name(s) and ID(s):   David Duran Fuentes (40264877)  Rayel Hadj Said(40265536)
+ * COMP249
+ * Assignment #3
+ * Due Date: December 2nd @11:59PM
+ */
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
@@ -6,6 +17,8 @@ import java.util.Scanner;
 
 public class CellListUtilization extends colour {
     public static void main(String[] args) {
+
+        System.out.println(c("IT") + c("BO") + c("R") + "\n~~~ Program Written By: David Duran Fuentes & Rayel Hadj Said ~~~" + c("RS"));
 
         CellList CL1 = new CellList();  // Creating two empty CellLists
         CL1.setListName("India");
