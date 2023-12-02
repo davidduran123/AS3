@@ -93,7 +93,7 @@ public class CellPhone extends colour implements Cloneable {
             }
         }
         CellPhone copy = (CellPhone)super.clone(); // Creating the copy w/bad serial-number.
-        copy.setSerialNum(newSN);
+        copy.serialNum=newSN;
         CellPhone.nextSN++;
         return copy;
     }
@@ -108,6 +108,6 @@ public class CellPhone extends colour implements Cloneable {
         if(o == null || o.getClass() != this.getClass())
             return false;
         CellPhone cell = (CellPhone) o;
-        return this.getBrand().equals(cell.getBrand()) && this.getPrice() == cell.getPrice() && this.getYear() == cell.getYear();
+        return this.brand.equals(cell.brand) && this.price == cell.price && this.year == cell.year;
     }
 }

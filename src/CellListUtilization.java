@@ -38,6 +38,7 @@ public class CellListUtilization extends colour {
         }
         catch(FileNotFoundException e){
             System.out.println(e.getMessage());
+            System.exit(0); // close program
         }
 
         while(file.hasNextLine()){ // Read the whole text file until the end

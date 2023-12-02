@@ -15,6 +15,10 @@ public class CellList extends colour {
 
 // INNER CLASS
 
+    /** May cause PRIVACY LEAK
+     * Package access inner class
+     * to get the best class should be PRIVATE
+     */
     class CellNode implements Cloneable {
     // ATTRIBUTES
         private CellPhone phone; // What the node contains.
@@ -34,30 +38,34 @@ public class CellList extends colour {
         public CellNode (CellNode another){ // Create HARD COPY of a node.
             try{
                 this.phone = another.phone.clone(); // This creates a HARD COPY of a CellPhone object
+                this.next = another.next;
             }
             catch(CloneNotSupportedException e) {
                 System.out.println(e.getMessage());
             }
-            this.next = another.next;
         }
     // CUSTOM
         @Override
         public CellNode clone() throws CloneNotSupportedException { // Create a new CellNode object & copies all attributes
             CellNode cloneOfNode = (CellNode)super.clone(); // HARD COPY of node made but SHALLOW COPY made of CellPhone object inside.
-            CellPhone hrdCpyOfPhone = this.phone.clone(); // Create a HARD COPY of the CellPhone object in the OG node
-            cloneOfNode.setPhone(hrdCpyOfPhone); // Make the NEW node point to the NEW CellPhone object.
+            CellPhone hardCpyOfPhone = this.phone.clone(); // Create a HARD COPY of the CellPhone object in the OG node
+            cloneOfNode.phone=hardCpyOfPhone; // Make the NEW node point to the NEW CellPhone object.
             return cloneOfNode;
         }
     // SET & GET
         public CellPhone getPhone() {
             return phone;
         }
+
+        // this method may cause a privacy leak as a programmer can get the pointer and modify the object
         public CellNode getNode() {
             return next;
         }
         public void setPhone(CellPhone phone) {
             this.phone = phone;
         }
+
+
         public void setNode(CellNode node) {
             this.next = node;
         }
@@ -78,8 +86,9 @@ public class CellList extends colour {
     }
 
     public CellList(CellList list){ // Fix to DEEP copy!
-        this.setListName(list.getListName() + " - copy");
-        this.setSize(list.getSize());
+        this.listName=list.listName + " - copy";
+        this.size = list.size;
+        this.head=null;
 
         CellNode t1, t2, t3;
         t1 = list.head; // Scans through the OG linked list
@@ -146,7 +155,7 @@ public class CellList extends colour {
      */
     public void addToStart(CellPhone phone) {
         this.head = new CellNode(phone, this.head);
-        this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
+        this.size= this.findListSize(); // Updating the 'size' attributes of the linked list.
         System.out.println(c("p") + "\nAdded node at the start of list " + c("rs") + this);
     } // TESTED : WORKS
 
@@ -158,11 +167,8 @@ public class CellList extends colour {
         if(this.head == null) // Scenario #1 (List in empty)
             throw new NoSuchElementException(c("r") + "ERROR: Cannot delete node at start as it doesn't exist in list " + c("rs") + this);
         else { // Scenario #2 (List has at least one node)
-            CellNode t = this.head;
-            this.head = t.next;
-            t.next = null;
-            t = null;
-            this.setSize(this.findListSize()); // Updating the 'size' attributes of the linked list.
+            head=head.next;
+            size--; // Updating the 'size' attributes of the linked list.
         }
         System.out.println(c("c") + "\nDeleted node at the starting position in list " + c("rs") + this);
     } // TESTED : WORKS
@@ -201,9 +207,9 @@ public class CellList extends colour {
         if(index < 0 || index > this.size - 1 || this.size == 0){ // Scenario #1: The index doesn't exist OR the linked list is empty.
             throw new NoSuchElementException(c("r") + "ERROR: Node at index "+ c("rs") + index + c("r")+ " can't be deleted, it doesn't exist in list " + c("rs") + this);
         }
-        else if(this.size == 1) { // Scenario #2: List contains one node.
-            this.head = null;
-            this.setSize(this.findListSize());
+        else if(index==0){
+            head=head.next;
+            size--;
         }
         else { // Scenario #3: List contains one node.
             CellNode t = this.head;
@@ -242,16 +248,15 @@ public class CellList extends colour {
     } // TESTED : WORKS
 
     /**
-     * Method that scans through a linked-list with the goal of finding the CellPhone object containing the matching serial-number.
+     * !!!! POTENTIAL PRIVACY LEAK !!!!
+     *     Returning an address to an object in memory is rarely a good idea as anyone who gets a hold on it can compromise it.
+     *     A safer alternative would be to return the index of the node holding the CellPhone object with the target serial-number.
+     * This method  scans through a linked-list with the goal of finding the CellPhone object containing the matching serial-number.
      * @param serialNumber Long value to search for at each node containing a CellPhone object.
      * @return The address of the node containing the CellPhone object with the matching serial number in memory.
      */
 
-    /*
-    !!!! POTENTIAL PRIVACY LEAK !!!!
-    Returning an address to an object in memory is rarely a good idea as anyone who gets a hold on it can compromise it.
-    A safer alternative would be to return the index of the node holding the CellPhone object with the target serial-number.
-     */
+
 
     public CellNode find(long serialNumber){
         int numIter = 0;

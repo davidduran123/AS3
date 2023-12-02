@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3458095f-f577-4626-8c51-6451584178dd" name="Changes" comment="">
+    <list default="true" id="3458095f-f577-4626-8c51-6451584178dd" name="Changes" comment="cant merge before commit">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CellList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CellList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CellListUtilization.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CellListUtilization.java" afterDir="false" />
@@ -23,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="s" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -54,7 +60,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.CellListUtilization">
+    <configuration name="CellListUtilization" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CellListUtilization" />
+      <module name="AS3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CellPhone" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="CellPhone" />
       <module name="AS3" />
@@ -64,6 +77,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CellListUtilization" />
+        <item itemvalue="Application.CellPhone" />
         <item itemvalue="Application.CellPhone" />
       </list>
     </recent_temporary>
@@ -83,10 +98,17 @@
       <workItem from="1700671872041" duration="17615000" />
       <workItem from="1700776685845" duration="25104000" />
       <workItem from="1700838237646" duration="22325000" />
+      <workItem from="1701018266257" duration="242000" />
+      <workItem from="1701235187847" duration="169000" />
+      <workItem from="1701542161850" duration="8096000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="cant merge before commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="cant merge before commit" />
   </component>
 </project>
